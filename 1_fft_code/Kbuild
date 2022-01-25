@@ -1,0 +1,3 @@
+obj-y += fft_test.o
+obj-y += fourierf.o
+obj-y += fftmisc.o

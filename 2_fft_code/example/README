@@ -1,0 +1,5 @@
+An example of realfft(3) usage is in example.c.  It contains two fourier
+transforms on real data.
+
+Compile with:
+	cc example.c ../real/realfft.a ../complex/fft.a -lm

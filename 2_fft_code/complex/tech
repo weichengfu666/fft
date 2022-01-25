@@ -1,0 +1,33 @@
+	Short technical description of functions in the fft(3) package
+
+
+"ft.c"
+The entry-points:
+	fft	- Forward Complex Fast Fourier Transform
+	rft	- Reverse Complex Fast Fourier Transform
+
+"fourier.c"
+Recursive implementation of the Cooley-Tukey algorithm:
+	Fourier	- top level call
+	radix	- determine radix for a number of samples
+	split	- split samples in groups, and recursively call Fourier
+	join	- join (add) groups of samples into a new group
+
+"complex.h"
+Manipulation of complex numbers:
+	COMPLEX	- type for complex numbers
+	c_re	- real part of complex number
+	c_im	- imaginary part of complex number
+	c_add_mul - multiply and add complex numbers
+	c_conj	- convert a complex number into its conjugate
+	c_realdiv - divide a complex by a real number
+
+"w.h"
+W-factors:
+	W	- give previously calculated W-factor
+
+"w.c"
+Computation of W-factors:
+	W_factors - array of W-factors
+	Nfactors - number of factors in W_factors
+	W_init	- prepare W-factors array

@@ -1,0 +1,83 @@
+.TH REALFFT 3
+.SH NAME
+realfft, realrft \- forward and reverse real fourier transform
+.SH SYNOPSIS
+.nf
+realfft (in, n, out)
+double *in;
+unsigned n;
+double *out;
+
+realrft (in, n, out)
+double *in;
+unsigned n;
+double *out;
+.fi
+.SH DESCRIPTION
+.I Realfft
+and
+.I realrft
+perform, respectively, forward and reverse discrete
+fast fourier transform on the
+.I n
+(an arbitrary number) reals
+of array
+.IR in .
+The result (also
+.I n
+reals) is placed in array
+.IR out .
+The original contents of
+.I in
+are not disturbed.
+
+The format of the
+.I out
+array of
+.I realfft
+and the
+.I in
+array of
+.I realrft
+is as follows:
+The cosine component of the dc frequency is under index 0
+and the
+.IR i -th
+harmonic's cosine and sine are under, respectively, index
+2 *
+.I i
+- 1 and 2 *
+.IR i .
+If
+.I n
+is even then the cosine component of the
+Nyquist frequency is under index
+.I n
+- 1.
+Note that the dc and Nyquist sine components need not be passed, since they
+are always 0.
+
+The actual transform is done by
+.IR fft (3)
+in complex space.
+.SH "SEE ALSO"
+fft(3)
+.SH FILES
+realfft.a \- contains realfft and realrft.
+.br
+fft.a \- library used by realfft.a.
+.br
+/usr/lib/libm.a \- library used by fft.a.
+.SH DIAGNOSTICS
+.I Realfft
+and
+.I realrft
+return -1 if routines in
+.IR fft (3)
+fail, else 0.
+.SH BUGS
+The error for a forward-reverse sequence is about 1e-13 for
+.I n
+= 1024.
+.SH AUTHOR
+Peter Valkenburg (valke@cs.vu.nl)

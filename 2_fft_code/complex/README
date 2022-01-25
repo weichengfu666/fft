@@ -1,0 +1,14 @@
+This fft(3) package does Cooley-Tukey fast Fourier transform on an arbitrary
+number of complex samples.
+
+How to make the stuff:
+	make		- create library "fft.a"
+	make fft.man	- nroff manual page "fft.3" into "fft.man"
+	make print	- print source, "tech" and "fft.man"
+
+File "tech" contains a short description of the functions and variables in the
+implementation.
+
+Programs using fft(3), should include "../complex.h" and be loaded (ld(1)) with
+libraries "fft.a" and "/usr/lib/libm.a".  The package also uses malloc(3) of
+the standard C-library.

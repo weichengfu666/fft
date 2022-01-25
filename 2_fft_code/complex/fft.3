@@ -1,0 +1,97 @@
+.TH FFT 3
+.SH NAME
+fft, rft \- forward and reverse complex fourier transform
+.SH SYNOPSIS
+.nf
+#include "complex.h"
+
+fft (in, n, out)
+COMPLEX *in;
+unsigned n;
+COMPLEX *out;
+
+rft (in, n, out)
+COMPLEX *in;
+unsigned n;
+COMPLEX *out;
+
+c_re (c)
+COMPLEX c;
+
+c_im (c)
+COMPLEX c;
+.fi
+.SH DESCRIPTION
+.I
+Fft
+and
+.I rft
+perform, respectively, forward and reverse discrete
+fast fourier transform on the
+.I n
+(an arbitrary number) complex
+samples of array
+.IR in .
+The result is placed in
+.IR out .
+.br
+The functions are a recursive implementation of the Cooley-Tukey algorithm.
+Both use O
+.RI ( n
+*
+.RI ( p1
++ .. +
+.IR pk ))
+operations, where
+.I pi
+is the
+.IR i -th
+factor in the
+prime-decomposition of size
+.I k
+of
+.IR n .
+.br
+Both functions compute a sine/cosine table internally.
+This table is not recomputed on successive calls with the same
+.IR n .
+
+.I C_re
+and
+.I c_im
+are C preprocessor defines that yield the real and imaginary
+parts of
+.IR c ,
+respectively.
+They are used to assign and inspect arrays
+.I in
+and
+.IR out .
+.SH FILES
+fft.a \- library containing fft and rft.
+.br
+/usr/lib/libm.a \- library used by fft.a.
+.SH DIAGNOSTICS
+.I Fft
+and
+.I rft
+return -1 if allocating space for the internal table fails, else 0.
+.SH BUGS
+The original contents of
+.I in
+are destroyed.
+
+The transform isn't optimized for interesting special cases of
+.IR n ,
+e.g.\&
+.I n
+is a power of 2, although it will work in O
+.RI ( n
+* 2log
+.RI ( n )).
+
+The error for a forward-reverse sequence is about 10e-13 for
+.I n
+= 1024.
+.SH AUTHOR
+Peter Valkenburg (valke@cs.vu.nl).

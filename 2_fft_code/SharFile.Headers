@@ -1,0 +1,25 @@
+=== fft.shar =========================
+From riacs!eos!ames!mailrus!bbn!bbn.com!rsalz Tue Mar 14 16:24:56 PST 1989
+
+Submitted-by: Peter Valkenburg <cs.vu.nl!valke>
+Posting-number: Volume 18, Issue 20
+Archive-name: fft
+
+The packages included below perform fast fourier transformations on an
+arbitrary number of real or complex samples.  It uses a generalized version
+of the well-known Cooley-Tukey algorithm, meaning that it will also work
+for a number of samples that is not a power of 2.
+
+Since I didn't bother to squeeze out the very last machine cycle, you are
+not advised to use this in real-time applications.  However, the recursive
+algorithm used is very neat.
+
+Enjoy.
+
+			Peter Valkenburg (valke@cs.vu.nl).
+--------------------------------------------------------------------------------
+WARNING:  This package shows serious deficiencies if used in SDI-systems or
+AEGIS-alikes.  So all of you defense-people: HANDS-OFF!
+--------------------------------------------------------------------------------
+
+----------cut here--------------------------------------------------------------
